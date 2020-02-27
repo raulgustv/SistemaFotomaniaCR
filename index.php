@@ -1,0 +1,82 @@
+<?php
+
+	include 'configs/config.php';
+	include 'configs/funciones.php';
+
+	if(!isset($p)){
+		$p="principal";
+	}else{
+		$p = $p;
+	}
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+	<!-- Bootstrap y CSS-->
+
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/all.css">
+
+
+
+
+	<!-- Javascript -->
+
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="css/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="css/font-awesome/js/all.js"></script>
+
+
+
+
+	<meta charset="UTF-8">
+	<title>Fotomania CR</title>
+
+</head>
+<body>
+
+	
+	<div class="header">
+		Fotomania CR
+	</div>
+
+
+	<div class="menu">
+		<a href="?p=principal">Principal</a>
+		<a href="?p=tienda">Tienda</a>
+		<a href="?p=galeria">Galería</a>
+		<a href="?p=videos">Videos</a>
+		<a href="?p=rifas">Rifas</a>
+		<a href="?p=sobreNosotros">Sobre Nosotros</a>
+
+		<a class="pull-right" href="?p=admin">Administrador</a>
+	</div>
+
+	<div class="cuerpo">
+		
+		<?php
+
+			if(file_exists("modulos/".$p.".php")){
+				include "modulos/".$p.".php";
+			}else{
+				echo "<i>No se ha encontrado módulo <b>".$p."</b> <a href='./'> Regresar </i>";
+			}
+
+		?>
+
+	</div>
+
+	<div class="footer">
+		Copyright Sistema Fotomania CR &copy, <?=date("Y")?>
+	</div>
+	
+	
+
+</body>
+</html>
