@@ -14,6 +14,9 @@
     		$r = mysqli_fetch_array($q);
 			$_SESSION['id'] = $r['id'];
 			redir("./");
+   		}else{
+   			alert("Datos no son validos");
+   			redir("?p=admin");
    		}
 
 
