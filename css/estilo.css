@@ -47,6 +47,42 @@ body{
 
 }
 
+/* Cuerpo Tienda */
+
+
+.producto{
+	width: 25%;
+	padding: 15px;
+	background: #C5C5C5;
+	color: #333;
+	display: inline-block;
+	margin: 5px;
+}
+
+.imgProducto{
+	text-align: center;
+	width: 335px;
+	height: 335px;
+}
+
+.nombreProducto{
+	padding: 10px;
+	color: #FFF;
+	background: #2C4EFE;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+
+.precio{
+	color: #14AE0E;
+}
+
+.producto button{
+	text-align: right;
+}
+
 
 /* Login */
 
