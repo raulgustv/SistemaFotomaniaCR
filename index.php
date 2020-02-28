@@ -22,6 +22,8 @@
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/fonts/">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 
 
 
@@ -30,7 +32,13 @@
 
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="css/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="css/font-awesome/js/all.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	
+
 
 
 
@@ -44,6 +52,10 @@
 	
 	<div class="header">
 		Fotomania CR
+
+		<div class="carrito float-right">
+			<a href="?p=carrito"><span class="glyphicon glyphicon-shopping-cart"></span></i></a>
+		</div>
 	</div>
 
 

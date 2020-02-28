@@ -85,6 +85,20 @@ body{
 	text-align: right;
 }
 
+/* Carrito */
+
+.carrito{
+	margin-top: 40px;
+}
+
+.imagenCarro{
+	width: 120px;
+	height: 120px;
+	border: 2px solid #99ccff;
+	border-radius: 1000px;
+}
+
+
 
 /* Login */
 
