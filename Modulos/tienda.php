@@ -1,6 +1,17 @@
 <?php
 
-	
+	//checkUser("tienda"); //descomentar para que cliente pueda ver tienda solo al iniciar sesión (temporal)
+
+	if(isset($agregar) && isset($cant)){
+
+		$idProd = clear($agregar);
+		$cant = clear($cant);
+		$idCliente = clear($_SESSION['idCliente']);
+
+		$q = $mysqli->query("INSERT INTO carro (idCliente, idProducto, cantidad) VALUES ($idCliente, $idProd, $cant)");
+		alert("Se añadieron productos");
+		redir("?p=tienda");
+	}
 
 
 	$q = $mysqli->query("SELECT * FROM productos ORDER by id DESC");
@@ -15,7 +26,21 @@
 			</div>
 
 			<span class="precio"><?=$divisa?><?=$r['precio']?></span>
-			<button class= "btn btn-primary float-right" onclick="agregarCarro('<?=$r['id']?>');"><i class="fas fa-shopping-cart"></i></button>
+
+
+			<?php
+				if(isset($_SESSION['idCliente'])){
+					?>
+
+					<button class= "btn btn-primary float-right" onclick="agregarCarro('<?=$r['id']?>');"><i class="fas fa-shopping-cart"></i></button>
+
+					<?php
+				}
+			?>
+
+
+
+		
 
 		</div>
 

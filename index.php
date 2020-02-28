@@ -47,7 +47,7 @@
 	</div>
 
 
-	<div class="menu">
+	<div class="menu"> 
 		<a href="?p=principal">Principal</a>
 		<a href="?p=tienda">Tienda</a>
 		<a href="?p=galeria">Galería</a>
@@ -55,7 +55,32 @@
 		<a href="?p=rifas">Rifas</a>
 		<a href="?p=sobreNosotros">Sobre Nosotros</a>
 
-		<a class="pull-right" href="?p=admin">Administrador</a>
+		<a href="?p=admin">Administrador</a>
+
+		<!-- Verificar inicio de sesión -->
+
+		<?php
+
+			if(isset($_SESSION['idCliente'])){
+
+			
+		?>		
+		<a class="float-right" href="?p=salir">Salir</a>
+		<a class="float-right" href="#"><?=nombreCliente($_SESSION['idCliente'])?></a>
+
+
+
+		<?php
+			}else{
+				?> 
+				<a href="?p=login" class="float-right">Iniciar Sesión</a>
+
+				<?php
+			}
+
+		?>
+
+	
 	</div>
 
 	<div class="cuerpo">
