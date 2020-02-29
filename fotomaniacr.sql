@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2020 a las 07:07:15
+-- Tiempo de generación: 29-02-2020 a las 07:30:46
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `fotomaniacr`
 --
-CREATE DATABASE IF NOT EXISTS `fotomaniacr` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
-USE `fotomaniacr`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +28,6 @@ USE `fotomaniacr`;
 -- Estructura de tabla para la tabla `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `user` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
@@ -48,52 +45,9 @@ INSERT INTO `admin` (`id`, `user`, `pass`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carro`
---
-
-DROP TABLE IF EXISTS `carro`;
-CREATE TABLE `carro` (
-  `id` int(11) NOT NULL,
-  `idCliente` int(11) NOT NULL,
-  `idProducto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `carro`
---
-
-INSERT INTO `carro` (`id`, `idCliente`, `idProducto`, `cantidad`) VALUES
-(1, 1, 14, 4);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clientes`
---
-
-DROP TABLE IF EXISTS `clientes`;
-CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
-  `user` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `pass` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`id`, `user`, `pass`, `name`) VALUES
-(1, 'user', '1234', 'user');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `productos`
 --
 
-DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
@@ -119,7 +73,6 @@ INSERT INTO `productos` (`id`, `nombre`, `precio`, `imagen`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
@@ -146,18 +99,6 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `carro`
---
-ALTER TABLE `carro`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -177,18 +118,6 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `carro`
---
-ALTER TABLE `carro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
