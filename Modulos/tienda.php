@@ -13,7 +13,7 @@
 		$v = $mysqli->query("SELECT * FROM carro where idCliente = '$idCliente' AND idProducto = '$idProd'");
 		if(mysqli_num_rows($v)>0){ //si ya el producto esta en carrito, con la sesión iniciada
 
-			$q = $mysqli->query("UPDATE carro SET cantidad = cantidad + $cant WHERE idCliente = '$idCliente'"); //actualiza cantidad productos
+			$q = $mysqli->query("UPDATE carro SET cantidad = cantidad + $cant WHERE idCliente = '$idCliente' AND idProducto = '$idProd'"); //actualiza cantidad productos
 
 		}else{
 			$q = $mysqli->query("INSERT INTO carro (idCliente, idProducto, cantidad) VALUES ($idCliente, $idProd, $cant)");

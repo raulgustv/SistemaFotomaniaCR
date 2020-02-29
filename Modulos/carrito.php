@@ -1,8 +1,42 @@
 <?php
 checkUser("carrito");
+
+
+if(isset($finalizar)){
+
+	$monto = clear($montoTotal);
+	$idCliente = clear($_SESSION['idCliente']);
+
+
+	//ingresar a tabla compra la compra de un producto, antes ingresar hay que verificar compra con paypal. Pendiente!
+	$q = $mysqli->query("INSERT INTO compra (idCliente, fecha, monto, estado) VALUES ('$idCliente', NOW(), '$monto', 0) ");
+
+	$sc = $mysqli->query("SELECT * FROM compra WHERE idCliente = '$idCliente' ORDER BY id DESC LIMIT 1");
+	$rc = mysqli_fetch_array($sc);
+	$ultimaCompra = $rc['id'];
+
+
+	$q2 = $mysqli->query("SELECT * FROM carro where idCliente = '$idCliente' ");
+	while($r2=mysqli_fetch_array($q2)){
+
+		$sp = $mysqli->query("SELECT * FROM productos WHERE id = '".$r2['idProducto']."'");
+		$rp = mysqli_fetch_array($sp);
+		$monto = $rp['precio'];
+
+		$mysqli->query("INSERT INTO productosCompra (idCompra, idProducto, cantidad, monto) VALUES  ('$ultimaCompra', '".$r2['idProducto']."','".$r2['cantidad']."','$monto')");
+	}
+
+	$mysqli->query("DELETE FROM carro WHERE idCliente = '$idCliente'"); //comentar es solo prueba por ahora
+	alert("Compra finalizada");
+	// redir("./");
+
+}
+
 ?>
 
 <h1><i class="fas fa-shopping-cart"></i>Carrito de compras</h1>
+
+<br><br>
 
 <table class="table table-striped">
 	
@@ -20,6 +54,8 @@ checkUser("carrito");
 
 	$q = $mysqli->query("SELECT * FROM carro Where idCliente = '$idCliente'"); // recorre carro 
 
+	$montoTotal = 0;
+
 	while($r = mysqli_fetch_array($q)){
 
 			$q2 = $mysqli->query("SELECT * FROM productos WHERE id = '".$r['idProducto']."'"); // recorre productos para determinar el nombre
@@ -31,6 +67,8 @@ checkUser("carrito");
 			$precioUnidad = $r2['precio'];
 			$impuesto = $cantidad * $precioUnidad * $iva; // aun no se muestra
 			$precioTotal = $cantidad * $precioUnidad + $impuesto;
+
+			$montoTotal = $montoTotal + $precioTotal;
 
 			?>
 
@@ -50,3 +88,15 @@ checkUser("carrito");
 ?>
 
 </table>
+
+<h4>Monto total <b class="text-success"><?=$divisa?><?=$montoTotal?></b></h4>
+
+<br><br>
+
+<form method="post" action="">
+	<input type="hidden" name="montoTotal" value="<?=$montoTotal?>"/>
+	<div class="btnCompra float-right">
+		<button class="btn btn-primary" name="finalizar"><i class="fas fa-check"></i> Finalizar compra</button>
+	</div>	
+</form>
+
